@@ -62,14 +62,9 @@ def part_two(file):
 script_dir = path.dirname(__file__)
 relative_path = "/data.txt"
 file = open(script_dir + relative_path)
-mode = 1
-blork = [line.strip("\r\n") for line in file]
+report = [line.strip("\r\n") for line in file]
 
-if mode == 1:
-    print(part_one(blork))
+print(part_one(report))
 
 
-print(int("0b" + oxygen_filter(blork), 2) * int("0b" + carbon_filter(blork), 2))
-
-# if mode == 2:
-#    print(part_two(file))
+print(int("0b" + oxygen_filter(report), 2) * int("0b" + carbon_filter(report), 2))

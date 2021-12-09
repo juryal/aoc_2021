@@ -1,5 +1,7 @@
 import sys
 from collections import deque
+
+
 def part_one(file):
     depthqueue = deque()
     increases = 0
@@ -23,14 +25,13 @@ def part_two(file):
         if len(depthqueue) == 3:
             sumqueue.append(sum(depthqueue))
             if len(sumqueue) == 2:
-                if sumqueue [0] < sumqueue[1]:
+                if sumqueue[0] < sumqueue[1]:
                     increases += 1
                 sumqueue.popleft()
             depthqueue.popleft()
     return increases
 
 
-    
 file = open("data.txt")
 mode = 2
 if mode == 1:

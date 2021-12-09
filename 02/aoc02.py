@@ -1,4 +1,6 @@
 import sys
+
+
 def part_one(file):
     horizontalposition = 0
     depth = 0
@@ -7,10 +9,11 @@ def part_one(file):
         if instruction[0] == "forward":
             horizontalposition += int(instruction[1])
         elif instruction[0] == "down":
-            depth +=int(instruction[1])
+            depth += int(instruction[1])
         elif instruction[0] == "up":
-            depth -=int(instruction[1])
+            depth -= int(instruction[1])
     return horizontalposition * depth
+
 
 def part_two(file):
     horizontalposition = 0
@@ -23,10 +26,11 @@ def part_two(file):
             horizontalposition += speed
             depth = depth + (aim * speed)
         elif instruction[0] == "down":
-            aim +=int(instruction[1])
+            aim += int(instruction[1])
         elif instruction[0] == "up":
-            aim -=int(instruction[1])
+            aim -= int(instruction[1])
     return horizontalposition * depth
+
 
 file = open("data.txt")
 mode = 2

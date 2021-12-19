@@ -1,5 +1,4 @@
-import sys
-from os import path
+import read_puzzle
 
 
 def oxygen_filter(report):
@@ -59,12 +58,12 @@ def part_two(file):
         readings += 1
 
 
-script_dir = path.dirname(__file__)
-relative_path = "/data.txt"
-file = open(script_dir + relative_path)
-report = [line.strip("\r\n") for line in file]
-
-print(part_one(report))
-
-
-print(int("0b" + oxygen_filter(report), 2) * int("0b" + carbon_filter(report), 2))
+# Begin options
+use_example = False
+# End options
+puzzle_path = read_puzzle.make_puzzle_path(use_example, 3)
+raw_puzzle = read_puzzle.get_puzzle_input(puzzle_path)
+print(part_one(raw_puzzle))
+print(
+    int("0b" + oxygen_filter(raw_puzzle), 2) * int("0b" + carbon_filter(raw_puzzle), 2)
+)

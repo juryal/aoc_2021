@@ -1,4 +1,4 @@
-import puzzle_file
+import read_puzzle
 from math import copysign
 from itertools import zip_longest
 
@@ -19,7 +19,6 @@ def parse_lines(line_endpoints):
     width = max(line_endpoints[0][0], line_endpoints[1][0])
     depth = max(line_endpoints[0][1], line_endpoints[1][1])
     line_map = [[0 for x in range(width + 1)] for y in range(depth + 1)]
-
     # if (difference[0] or difference[1]) and not (difference[0] and difference[1]):
     current_point = [line_endpoints[0][0], line_endpoints[0][1]]
     while difference[0] != 0 or difference[1] != 0:
@@ -60,7 +59,11 @@ def count_overlaps(vent_map):
     return overlaps
 
 
-raw_puzzle = puzzle_file.get_puzzle_input("../puzzles/day05.txt")
+# Begin options
+use_example = False
+# End options
+puzzle_path = read_puzzle.make_puzzle_path(use_example, 5)
+raw_puzzle = read_puzzle.get_puzzle_input(puzzle_path)
 line_endpoints = [parse_endpoint(line) for line in raw_puzzle]
 vent_maps = []
 for endpoints in line_endpoints:

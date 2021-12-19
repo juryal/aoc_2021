@@ -1,15 +1,5 @@
-from pathlib import Path
+import read_puzzle
 import copy
-
-
-def get_puzzle_input(path_string):
-    # raw_puzzle_path = pathlib.Path(__file__).parent / "example.txt"
-    puzzle_path = Path(path_string)
-    if not puzzle_path.is_absolute():
-        puzzle_path = Path(__file__).parent / puzzle_path
-    with open(puzzle_path) as raw_puzzle_file:
-        raw_puzzle = [line.strip() for line in raw_puzzle_file]
-    return raw_puzzle
 
 
 def part_one(bingo_boards, raw_called_numbers):
@@ -57,8 +47,11 @@ def part_two(bingo_boards, raw_called_numbers):
     return sum(sum(y if y else 0 for y in x) for x in last_winner) * last_draw
 
 
-# Set aside the called numbers
-raw_puzzle = get_puzzle_input("puzzle_input.txt")
+# Begin options
+use_example = False
+# End options
+puzzle_path = read_puzzle.make_puzzle_path(use_example, 4)
+raw_puzzle = read_puzzle.get_puzzle_input(puzzle_path)
 raw_called_numbers = [int(x) for x in raw_puzzle.pop(0).split(",")]
 bingo_boards = []
 bingo_board = []
@@ -70,6 +63,5 @@ for line in raw_puzzle:
     elif line:
         bingo_board.append([int(x) for x in line.split()])
 bingo_boards.append(bingo_board)
-
 print(part_one(bingo_boards, raw_called_numbers))
 print(part_two(bingo_boards, raw_called_numbers))

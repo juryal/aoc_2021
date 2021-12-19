@@ -1,5 +1,5 @@
-import sys
 from collections import deque
+import read_puzzle
 
 
 def part_one(file):
@@ -32,9 +32,13 @@ def part_two(file):
     return increases
 
 
-file = open("data.txt")
+# Begin options
+use_example = False
 mode = 2
+# End options
+puzzle_path = read_puzzle.make_puzzle_path(use_example, 1)
+raw_puzzle = read_puzzle.get_puzzle_input(puzzle_path)
 if mode == 1:
-    print(part_one(file))
+    print(part_one(raw_puzzle))
 if mode == 2:
-    print(part_two(file))
+    print(part_two(raw_puzzle))

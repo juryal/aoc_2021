@@ -1,7 +1,7 @@
-import puzzle_file
+import read_puzzle
 
 
-def naive_generation(generations, fish_list):
+def naive_generation(generations: int, fish_list: list):
     for generation in range(generations):
         spawns = 0
         for fish in enumerate(fish_list):
@@ -41,12 +41,11 @@ def quicker_generation(generations, fish_list):
     return sum(fish_by_timer.values())
 
 
-run_on_example = False
-puzzle_path = "../puzzles/day06"
-if run_on_example:
-    puzzle_path = puzzle_path + "_example"
-puzzle_path = puzzle_path + ".txt"
+# Begin options
+use_example = False
 generations = 256
-raw_puzzle = puzzle_file.get_puzzle_input(puzzle_path)
+# End options
+puzzle_path = read_puzzle.make_puzzle_path(use_example)
+raw_puzzle = read_puzzle.get_puzzle_input(puzzle_path)
 fish_list = [int(x) for x in raw_puzzle[0].split(",")]
 print(quicker_generation(generations, fish_list))

@@ -1,3 +1,4 @@
 04/puzzle_input.txt
 src/__pycache__/*
 puzzles/*
+!puzzles/*example.txt
